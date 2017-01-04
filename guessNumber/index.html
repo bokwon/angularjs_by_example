@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Guess the number</title>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular-route.js"></script>
+    </head>
+    <body ng-app="app">
+        <div class="container" ng-controller="GuessNumberController as gnc">
+            <h2>Guess the Number!</h2>
+            <p class="well lead">Guess the computer generated random number between 1 and 1000.<p>
+            <label>Your Guess: </label><br><input type="number" ng-model="gnc.guess"/>
+            <button ng-click="gnc.verifyGuess()" class="btn btn-primary btn-sm">verify</button>
+            <button ng-click="gnc.initializeGame()" class="btn btns-primary btn-sm">Restart</button>
+            <p>
+                <p ng-show="gnc.deviation<0" class="alert alert-warning"> Your guess is higher.</p>
+                <p ng-show="gnc.deviation>0" class="alert alert-warning"> Your guess is lower.</p>
+                <p ng-show="gnc.deviation===0" class="alert alert-success"> Yes! That's it.</p>
+            </p>
+            <p class="text-info">No of guesses : <span class="badge">{{gnc.noOfTries}}</span></p>
+        </div>
+
+        <!--main app module-->
+        <script src="app/app.module.js"></script>
+        <script src="app/guessNumber.controller.js"></script>
+
+    </body>
+</html>
